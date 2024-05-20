@@ -1,0 +1,28 @@
+@import url('https://fonts.cdnfonts.com/css/star-wars');
+
+$white: rgba(255, 255, 255, 0.8);
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Star Wars', sans-serif;
+    box-sizing: border-box;
+}
+
+header {
+    color: $white;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    padding: 50px 0 50px;
+}
+
+header {
+    h1 {
+        font-size: 200;
+    }
+}
+
+
