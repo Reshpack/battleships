@@ -21,7 +21,72 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #222;
+  padding: 20px 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #FFD700;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+main section {
+  flex: 1;
+}
+main section .grid {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: repeat(10, 30px);
+  gap: 5px;
+  justify-content: center;
+}
+main section .grid div {
+  width: 30px;
+  height: 30px;
+  background-color: #444;
+  border: 1px solid #fff;
+}
+
+#controls {
+  margin-top: 20px;
+}
+#controls button {
+  background-color: #FFD700;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 5px;
+}
+#controls button:hover {
+  background-color: #FFA500;
+}
+
+footer {
+  background-color: #222;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}`, "",{"version":3,"sources":["webpack://./src/main.scss"],"names":[],"mappings":"AAOA;EACI,8BAAA;EACA,sBATe;EAUf,WAPS;EAQT,kBAAA;EACA,SAAA;EACA,UAAA;AANJ;;AASA;EACI,sBAbe;EAcf,eAAA;AANJ;;AASA;EACI,SAAA;EACA,iBAAA;EACA,cAvBY;AAiBhB;;AASA;EACI,aAAA;EACA,uBAAA;EACA,SAAA;EACA,aAAA;AANJ;AAQI;EACI,OAAA;AANR;AAQQ;EACI,aAAA;EACA,uCAAA;EACA,oCAAA;EACA,QAAA;EACA,uBAAA;AANZ;AAQY;EACI,WAvCJ;EAwCI,YAxCJ;EAyCI,sBAAA;EACA,sBAAA;AANhB;;AAYA;EACI,gBAAA;AATJ;AAWI;EACI,yBAxDQ;EAyDR,WA1DW;EA2DX,YAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;EACA,WAAA;AATR;AAWQ;EACI,yBAhEM;AAuDlB;;AAcA;EACI,sBApEe;EAqEf,eAAA;EACA,eAAA;EACA,WAAA;EACA,SAAA;AAXJ","sourcesContent":["$background-color: #000;\r\n$primary-color: #FFD700;\r\n$secondary-color: #FFA500;\r\n$text-color: #fff;\r\n$header-footer-bg: #222;\r\n$grid-size: 30px;\r\n\r\nbody {\r\n    font-family: Arial, sans-serif;\r\n    background-color: $background-color;\r\n    color: $text-color;\r\n    text-align: center;\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n\r\nheader {\r\n    background-color: $header-footer-bg;\r\n    padding: 20px 0;\r\n}\r\n\r\nh1 {\r\n    margin: 0;\r\n    font-size: 2.5rem;\r\n    color: $primary-color;\r\n}\r\n\r\nmain {\r\n    display: flex;\r\n    justify-content: center;\r\n    gap: 20px;\r\n    padding: 20px;\r\n\r\n    section {\r\n        flex: 1;\r\n\r\n        .grid {\r\n            display: grid;\r\n            grid-template-columns: repeat(10, $grid-size);\r\n            grid-template-rows: repeat(10, $grid-size);\r\n            gap: 5px;\r\n            justify-content: center;\r\n\r\n            div {\r\n                width: $grid-size;\r\n                height: $grid-size;\r\n                background-color: #444;\r\n                border: 1px solid $text-color;\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n#controls {\r\n    margin-top: 20px;\r\n\r\n    button {\r\n        background-color: $primary-color;\r\n        color: $background-color;\r\n        border: none;\r\n        padding: 10px 20px;\r\n        font-size: 1rem;\r\n        cursor: pointer;\r\n        margin: 5px;\r\n\r\n        &:hover {\r\n            background-color: $secondary-color;\r\n        }\r\n    }\r\n}\r\n\r\nfooter {\r\n    background-color: $header-footer-bg;\r\n    padding: 10px 0;\r\n    position: fixed;\r\n    width: 100%;\r\n    bottom: 0;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -547,10 +612,108 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.scss */ "./src/main.scss");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
+
+// Ship class/factory
+var Ship = /*#__PURE__*/function () {
+  function Ship(length) {
+    _classCallCheck(this, Ship);
+    this.length = length;
+    this.hits = 0;
+  }
+  return _createClass(Ship, [{
+    key: "hit",
+    value: function hit() {
+      this.hits += 1;
+    }
+  }, {
+    key: "isSunk",
+    value: function isSunk() {
+      return this.hits >= this.length;
+    }
+  }]);
+}(); // Gameboard class/factory
+var Gameboard = /*#__PURE__*/function () {
+  function Gameboard() {
+    _classCallCheck(this, Gameboard);
+    this.board = Array(10).fill(null).map(function () {
+      return Array(10).fill(null);
+    });
+    this.ships = [];
+    this.missedShots = [];
+  }
+  return _createClass(Gameboard, [{
+    key: "placeShip",
+    value: function placeShip(ship, x, y, isHorizontal) {
+      if (isHorizontal) {
+        for (var i = 0; i < ship.length; i++) {
+          this.board[x][y + i] = ship;
+        }
+      } else {
+        for (var _i = 0; _i < ship.length; _i++) {
+          this.board[x + _i][y] = ship;
+        }
+      }
+      this.ships.push(ship);
+    }
+  }, {
+    key: "receiveAttack",
+    value: function receiveAttack(x, y) {
+      var cell = this.board[x][y];
+      if (cell === null) {
+        this.missedShots.push([x, y]);
+        return false;
+      } else {
+        cell.hit();
+        return true;
+      }
+    }
+  }, {
+    key: "allShipsSunk",
+    value: function allShipsSunk() {
+      return this.ships.every(function (ship) {
+        return ship.isSunk();
+      });
+    }
+  }]);
+}(); // Player class/factory
+var Player = /*#__PURE__*/function () {
+  function Player(name) {
+    _classCallCheck(this, Player);
+    this.name = name;
+    this.gameboard = new Gameboard();
+  }
+  return _createClass(Player, [{
+    key: "attack",
+    value: function attack(opponent, x, y) {
+      return opponent.gameboard.receiveAttack(x, y);
+    }
+  }]);
+}(); // Initialize players
+var player = new Player('Player');
+var computer = new Player('Computer');
+
+// Event listeners
+document.getElementById('start-game').addEventListener('click', startGame);
+document.getElementById('place-ships').addEventListener('click', placeShips);
+function startGame() {
+  console.log('Game started');
+  // Implement game start logic
+}
+function placeShips() {
+  console.log('Placing ships');
+  // Implement ship placement logic
+}
 console.log("1, 3, 5");
+console.log('Star Wars Battleships Game Initialized');
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle563e6e88ff879b3e4038.js.map
+//# sourceMappingURL=bundle7bb8560535ff92427e4e.js.map

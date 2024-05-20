@@ -1,9 +1,3 @@
-import './main.scss'
-import picture from './assets/example.png'
+import './styles/main.scss'
+import './styles/background.css'
 
-
-const pictureImg = document.getElementById('pictureImg');
-pictureImg.src = picture
-
-
-console.log("1, 3, 5");
