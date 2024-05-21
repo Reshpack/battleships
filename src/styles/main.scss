@@ -11,6 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    color: $white;
 }
 
 header {
@@ -73,8 +74,29 @@ h1 {
 }
 
 .controls {
-    margin-top: 20px;
-
+    display: flex;
+    flex-direction: column;
+    
+    .control-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center; // Center icon and text horizontally
+        margin: 10px 0; // Add some space between each control item
+        
+        .icon {
+            width: 30px;
+            svg {
+                fill: $white;
+                width: 30px;
+                height: 30px;
+            }
+        }
+        
+        p {
+            color: $white;
+            margin: 5px 0 0 0; // Add a small margin on top of the text
+        }
+    }
 }
 
 .boards {
