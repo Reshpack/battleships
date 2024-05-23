@@ -1,46 +1,62 @@
-@import url('https://fonts.cdnfonts.com/css/star-wars');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
 $white: #fff;
 
 html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Star Wars', sans-serif;
+    font-family: 'Black Ops One', sans-serif;
     box-sizing: border-box;
-    background-color: black;
     min-height: 100vh;
-    color: $white;
-    display: flex;
-    flex-direction: column;
 }
 
 body {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 header {
     justify-content: center;
     display: flex;
     text-align: center;
-    background-image: url('../assets/header.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 0 20px 5px $white;
 }
 
 h1 {
-    color: $white;
+    font-size: 80px;
 }
 
 main {
     flex-grow: 1;
 }
 
+.game-board {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#gameboard-container {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.block {
+    width: 20px;
+    height: 20px;
+    border: solid 1px black;
+    box-sizing: border-box;
+}
+
+
+
 .option-container {
     width: 500px;
-    height: 50px;
+    height: 60px;
     background-color: yellow;
     display: flex;
     align-items: center;
