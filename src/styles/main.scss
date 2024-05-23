@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
 $white: #fff;
+$cell-size: 20px;
+$miss-color: #bbb;
+$hit-color: red;
+$ship-color: gray;
 
 html, body {
     margin: 0;
@@ -28,64 +32,48 @@ h1 {
 
 main {
     flex-grow: 1;
-}
-
-.game-board {
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
 }
 
-#gameboard-container {
-    width: 500px;
+.game-container {
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
 }
 
-.block {
-    width: 20px;
-    height: 20px;
-    border: solid 1px black;
-    box-sizing: border-box;
+.game-message {
+    width: 300px;
 }
 
-
-
-.option-container {
-    width: 500px;
-    height: 60px;
-    background-color: yellow;
+.buttons {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
 }
 
-.submarine, .cruiser, .battleship, .carrier, .destroyer {
-    background-color: aqua;
+button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    font-size: 20px;
 }
 
-.cruiser-preview, .battleship-preview, .carrier-preview, .destroyer-preview, .submarine-preview {
-    height: 10px;
-    margin: 3px;
+.game-container h2 {
+    display: flex;
+    justify-content: center;
 }
 
-.cruiser-preview { width: 30px; }
-.battleship-preview { width: 40px; }
-.carrier-preview { width: 50px; }
-.destroyer-preview { width: 20px; }
-.submarine-preview { width: 30px; }
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #222;
-    color: $white;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, $cell-size);
+    grid-template-rows: repeat(10, $cell-size);
+    border: 1px solid black;  
 }
 
-footer a {
-    color: #00f;
-    text-decoration: none;
-}

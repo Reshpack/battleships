@@ -7,28 +7,26 @@
     <link rel="stylesheet" href="path/to/your/styles.css">
 </head>
 <body>
-        <header id="header"><h1>BATTLESHIP</h1></header>
+    <header id="header"><h1>BATTLESHIP</h1></header>
+    <div class="buttons">
+        <button class="randomButton">RANDOM</button>
+        <button class="startButton">START</button>
+    </div>
     
-        <main>
-            <div id="game-info">
-                <p>Turn: <span id="turn-display"></span></p>
-                <p>Info: <span id="info"></span></p>
+    <main>
+        <div class="game-container">
+            <div class="player-container player-1">
+                <h2>Player</h2>
+                <div class="grid player-grid"></div>
             </div>
-    
-            <div id="gameboard-container"></div>
-    
-            <div class="option-container">
-                <div class="destroyer-preview destroyer" draggable="true"></div>
-                <div class="submarine-preview submarine" draggable="true"></div>
-                <div class="cruiser-preview cruiser" draggable="true"></div>
-                <div class="battleship-preview battleship" draggable="true"></div>
-                <div class="carrier-preview carrier" draggable="true"></div>
+            <div class="game-message"><h2>Log</h2><span class="log-message"></span></div>
+            <div class="player-container player-2">
+                <h2>Computer</h2>
+                <div class="grid computer-grid"></div>
             </div>
+        </div>    
+    </main>
     
-            <button id="flip-button">ROTATE</button>
-            <button id="start-button">START</button>
-        </main>
-    
-        <footer>made by <a href="#">Suresh Packiry</a></footer>
+    <footer>made by <a href="#">Suresh Packiry</a></footer>
 </body>
 </html>
