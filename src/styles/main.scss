@@ -5,6 +5,9 @@ $cell-size: 20px;
 $miss-color: #bbb;
 $hit-color: red;
 $ship-color: gray;
+$title: #4A699F;
+
+$button-scale-factor: 1.1;
 
 html, body {
     margin: 0;
@@ -28,6 +31,7 @@ header {
 
 h1 {
     font-size: 80px;
+    color: $title;
 }
 
 main {
@@ -45,25 +49,6 @@ main {
     width: 300px;
 }
 
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    margin: 30px 0;
-}
-
-button {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font-size: inherit;
-    font-family: inherit;
-    color: inherit;
-    cursor: pointer;
-    font-size: 20px;
-}
 
 .game-container h2 {
     display: flex;
