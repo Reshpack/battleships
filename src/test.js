@@ -127,3 +127,47 @@ describe('Gameboard', () => {
     expect(result).toEqual([[0, 0]]);
   });
 });
+
+// Player 
+describe('Player', () => {
+  it('initializes with correct name and type', () => {
+    const player = new Player('Player 1');
+    expect(player.name).toBe('Player 1');
+    expect(player.type).toBe('player');
+  });
+
+  it('initializes with correct type when specified', () => {
+    const computerPlayer = new Player('Computer', 'computer');
+    expect(computerPlayer.type).toBe('computer');
+  });
+
+  it('initializes with a gameboard', () => {
+    const player = new Player('Player 1');
+    expect(player.gameboard).toBeDefined();
+  });
+
+  it('makes a random move for computer', () => {
+    const computerPlayer = new Player('Computer', 'computer');
+    const opponentGameboard = {
+      isHitBefore: () => false, 
+      receiveAttack: () => 'hit'
+    };
+    const result = computerPlayer.makeMove(opponentGameboard);
+    expect(result).toBe('hit');
+  });
+
+  it('makes a specified move for player', () => {
+    const player = new Player('Player 1');
+    const opponentGameboard = { 
+      receiveAttack: () => 'hit' 
+    };
+    const result = player.makeMove(opponentGameboard, [0, 0]);
+    expect(result).toBe('hit');
+  });
+
+  it('returns null if no move is made', () => {
+    const player = new Player('Player 1');
+    const result = player.makeMove();
+    expect(result).toBeNull();
+  });
+});
