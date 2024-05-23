@@ -2,16 +2,21 @@
 
 $white: #fff;
 
-body {
+html, body {
     margin: 0;
     padding: 0;
     font-family: 'Star Wars', sans-serif;
     box-sizing: border-box;
     background-color: black;
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
     color: $white;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -29,101 +34,35 @@ h1 {
     color: $white;
 }
 
-.title {
-    color: $white;
-    padding-top: 20px;
-    display: flex;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+main {
     flex-grow: 1;
-    border: 0.05em solid red;
-    margin-top: 10%;
 }
 
-.ships {
+.option-container {
+    width: 500px;
+    height: 50px;
+    background-color: yellow;
     display: flex;
-    flex-direction: column;
-}
-
-.ship {
-    position: relative;
-    display: flex;
-    flex-direction: row;
+    align-items: center;
     margin: 10px 0;
 }
 
-.ship img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+.submarine, .cruiser, .battleship, .carrier, .destroyer {
+    background-color: aqua;
 }
 
-.ship div {
-    width: 40px; /* Adjust width and height to fit your board */
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid #000;
-    z-index: 1;
+.cruiser-preview, .battleship-preview, .carrier-preview, .destroyer-preview, .submarine-preview {
+    height: 10px;
+    margin: 3px;
 }
 
-.controls {
-    display: flex;
-    flex-direction: column;
-    
-    .control-item {
-        display: flex;
-        flex-direction: row;
-        align-items: center; // Center icon and text horizontally
-        margin: 10px 0; // Add some space between each control item
-        
-        .icon {
-            width: 30px;
-            svg {
-                fill: $white;
-                width: 30px;
-                height: 30px;
-            }
-        }
-        
-        p {
-            color: $white;
-            margin: 5px 0 0 0; // Add a small margin on top of the text
-        }
-    }
-}
-
-.boards {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-}
-
-.board {
-    width: 400px; 
-    height: 400px; 
-    background-color: #fff;
-    margin-top: 10px;
-    .title {
-        padding-left: 200px;
-    }
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 50px;
-}
+.cruiser-preview { width: 30px; }
+.battleship-preview { width: 40px; }
+.carrier-preview { width: 50px; }
+.destroyer-preview { width: 20px; }
+.submarine-preview { width: 30px; }
 
 footer {
-    margin-top: auto;
     text-align: center;
     padding: 10px;
     background-color: #222;
