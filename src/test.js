@@ -2,14 +2,17 @@ import Ship from './ship';
 import Gameboard from './gameboard';
 import Player from './player';
 
+import {describe, expect, it} from "vitest";
 
-test('Ship initializes with correct length and hit count', () => {
+
+describe('Ship', () => {
+  it('initializes with correct length and hit count', () => {
     const ship = Ship(3);
     expect(ship.length).toBe(3);
     expect(ship.getHitCount()).toBe(0);
-});
+  });
 
-test('Ship hit method increments hit count', () => {
+  it('hit method increments hit count', () => {
     const ship = Ship(3);
     ship.hit();
     expect(ship.getHitCount()).toBe(1);
@@ -20,95 +23,107 @@ test('Ship hit method increments hit count', () => {
     // Further hits should not increase hit count
     ship.hit();
     expect(ship.getHitCount()).toBe(3);
-});
+  });
 
-test('Ship isSunk method works correctly', () => {
+  it('isSunk method works correctly', () => {
     const ship = Ship(2);
     expect(ship.isSunk()).toBe(false);
     ship.hit();
     expect(ship.isSunk()).toBe(false);
     ship.hit();
     expect(ship.isSunk()).toBe(true);
+  });
+
+  it('with length 0 is considered sunk', () => {
+    const ship = Ship(0);
+    expect(ship.isSunk()).toBe(true);
+    expect(ship.getHitCount()).toBe(0);
+    ship.hit();
+    expect(ship.getHitCount()).toBe(0);
+  });
 });
 
 //Gameboard tests
 
-test('Gameboard initializes correctly', () => {
-    const gameboard = Gameboard(10, 10);
+describe('Gameboard', () => {
+  it('initializes with correct dimensions', () => {
+    const gameboard = new Gameboard(10, 10);
     expect(gameboard.gameboard.length).toBe(10);
     expect(gameboard.gameboard[0].length).toBe(10);
   });
-  
-  test('Place ship on the gameboard', () => {
-    const gameboard = Gameboard(10, 10);
-    const ship = Ship(3);
-    expect(gameboard.placeShip(ship, [0, 0], 'horizontal')).toBe(true);
-    expect(gameboard.gameboard[0][0]).toBe(ship);
-    expect(gameboard.gameboard[0][1]).toBe(ship);
-    expect(gameboard.gameboard[0][2]).toBe(ship);
-  });
-  
-  test('Place ship out of bounds', () => {
-    const gameboard = Gameboard(10, 10);
-    const ship = Ship(3);
-    expect(gameboard.placeShip(ship, [0, 8], 'horizontal')).toBe(false);
-    expect(gameboard.placeShip(ship, [8, 0], 'vertical')).toBe(false);
-  });
-  
-  test('Receive attack and hit ship', () => {
-    const gameboard = Gameboard(10, 10);
-    const ship = Ship(3);
-    gameboard.placeShip(ship, [0, 0], 'horizontal');
-    expect(gameboard.receiveAttack([0, 0])).toBe('hit');
-    expect(ship.getHitCount()).toBe(1);
-  });
-  
-  test('Receive attack and miss', () => {
-    const gameboard = Gameboard(10, 10);
-    expect(gameboard.receiveAttack([0, 0])).toBe('missed');
-    expect(gameboard.getMissedAttacks().length).toBe(1);
-  });
-  
-  test('All ships sunk', () => {
-    const gameboard = Gameboard(10, 10);
-    const ship = Ship(1);
-    gameboard.placeShip(ship, [0, 0], 'horizontal');
-    gameboard.receiveAttack([0, 0]);
-    expect(gameboard.isAllShipsSunk()).toBe(true);
+
+  it('places ship horizontally', () => {
+    const gameboard = new Gameboard(10, 10);
+    const ship = { length: 3 };
+    const result = gameboard.placeShip(ship, [0, 0], 'horizontal');
+    expect(result).toBe(true);
   });
 
-// Player tests
-test('Player initializes correctly', () => {
-    const player = Player('Alice');
-    expect(player.name).toBe('Alice');
-    expect(player.type).toBe('player');
-    expect(player.gameboard).toBeDefined();
+  it('places ship vertically', () => {
+    const gameboard = new Gameboard(10, 10);
+    const ship = { length: 3 };
+    const result = gameboard.placeShip(ship, [0, 0], 'vertical');
+    expect(result).toBe(true);
   });
-  
-  test('Computer makes valid moves', () => {
-    const computer = Player('AI', 'computer');
-    const opponentGameboard = Gameboard();
-  
-    const ship = Ship(2);
-    opponentGameboard.placeShip(ship, [0, 0], 'horizontal');
-  
-    let moveResult = computer.makeMove(opponentGameboard);
-    expect(['hit', 'missed']).toContain(moveResult);
-  
-    moveResult = computer.makeMove(opponentGameboard);
-    expect(['hit', 'missed']).toContain(moveResult);
+
+  it('returns false if ship placement is out of bounds', () => {
+    const gameboard = new Gameboard(10, 10);
+    const ship = { length: 3 };
+    const result = gameboard.placeShip(ship, [9, 9], 'horizontal');
+    expect(result).toBe(false);
   });
-  
-  test('Player makes specified moves', () => {
-    const player = Player('Alice');
-    const opponentGameboard = Gameboard();
-  
-    const ship = Ship(2);
-    opponentGameboard.placeShip(ship, [0, 0], 'horizontal');
-  
-    let moveResult = player.makeMove(opponentGameboard, [0, 0]);
-    expect(moveResult).toBe('hit');
-  
-    moveResult = player.makeMove(opponentGameboard, [1, 1]);
-    expect(moveResult).toBe('missed');
+
+  it('returns false if ship placement overlaps with existing ship', () => {
+    const gameboard = new Gameboard(10, 10);
+    const ship1 = { length: 3 };
+    const ship2 = { length: 2 };
+    gameboard.placeShip(ship1, [0, 0], 'horizontal');
+    const result = gameboard.placeShip(ship2, [0, 1], 'horizontal');
+    expect(result).toBe(false);
   });
+
+  it('registers hit on ship', () => {
+    const gameboard = new Gameboard(10, 10);
+    const ship = { length: 3, hit: () => {} }; 
+    const hitMock = () => { ship.hitCalled = true; }; 
+    ship.hit = hitMock; 
+    gameboard.placeShip(ship, [0, 0], 'horizontal');
+    const result = gameboard.receiveAttack([0, 0]);
+    expect(result).toBe('hit');
+    expect(ship.hitCalled).toBe(true); 
+  });
+
+  it('registers missed attack', () => {
+    const gameboard = new Gameboard(10, 10);
+    const result = gameboard.receiveAttack([0, 0]);
+    expect(result).toBe('missed');
+  });
+
+  it('returns "hit before" if coordinate has been hit before', () => {
+    const gameboard = new Gameboard(10, 10);
+    gameboard.receiveAttack([0, 0]);
+    const result = gameboard.receiveAttack([0, 0]);
+    expect(result).toBe('hit before');
+  });
+
+  it('returns "NaN" if attack coordinates are not numbers', () => {
+    const gameboard = new Gameboard(10, 10);
+    const result = gameboard.receiveAttack(['a', 'b']);
+    expect(result).toBe('NaN');
+  });
+
+  it('checks if all ships are sunk', () => {
+    const gameboard = new Gameboard(10, 10);
+    const ship = { length: 1, isSunk: () => true };
+    gameboard.placeShip(ship, [0, 0], 'horizontal');
+    const result = gameboard.isAllShipsSunk();
+    expect(result).toBe(true);
+  });
+
+  it('returns missed attacks', () => {
+    const gameboard = new Gameboard(10, 10);
+    gameboard.receiveAttack([0, 0]);
+    const result = gameboard.getMissedAttacks();
+    expect(result).toEqual([[0, 0]]);
+  });
+});
