@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
 $white: #fff;
-$cell-size: 20px;
+$cell-size: 40px;
 $miss-color: #bbb;
 $hit-color: red;
 $ship-color: gray;
@@ -47,6 +47,10 @@ main {
 
 .game-message {
     width: 300px;
+}
+
+.message-box {
+    height: 400px;
 }
 
 
